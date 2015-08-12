@@ -1,0 +1,47 @@
+{
+  "objects": [
+    {
+      "period": "1 days",
+      "name": "Every 1 day",
+      "id": "DefaultSchedule",
+      "type": "Schedule",
+      "startAt": "FIRST_ACTIVATION_DATE_TIME"
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "scriptUri": "s3://iwishidknown/iwishidknown.sh",
+      "name": "DefaultActivity1",
+      "id": "ActivityId_qyoFQ",
+      "runsOn": {
+        "ref": "ResourceId_KlGSk"
+      },
+      "type": "ShellCommandActivity"
+    },
+    {
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "imageId": "ami-fd9cecc7",
+      "instanceType": "t2.micro",
+      "name": "DefaultResource1",
+      "id": "ResourceId_KlGSk",
+      "type": "Ec2Resource",
+      "terminateAfter": "30 Minutes"
+    },
+    {
+      "failureAndRerunMode": "CASCADE",
+      "schedule": {
+        "ref": "DefaultSchedule"
+      },
+      "resourceRole": "DataPipelineDefaultResourceRole",
+      "role": "DataPipelineDefaultRole",
+      "pipelineLogUri": "s3://iwishidknown-log/",
+      "scheduleType": "cron",
+      "name": "Default",
+      "id": "Default"
+    }
+  ],
+  "parameters": []
+}
